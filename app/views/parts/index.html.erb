@@ -1,0 +1,21 @@
+<%= link_to 'New part', new_part_path %>
+<table>
+	<tr>
+		<th>ID</th>
+		<th>Category</th>
+		<th>Description</th>
+		<th>Part Number</th>
+		<th colspan="2"></th>
+	</tr>
+	<% @parts.each do |part| %> 
+		<tr>
+			<td><%= part.id %></td>
+			<td><%= part.category %></td>
+			<td><%= part.description %></td>
+			<td><%= part.part_number %></td>
+			<td><%= link_to 'Show', part_path(part) %></td>
+      		<td><%= link_to 'Edit', edit_part_path(part) %></td>
+      		
+		</tr>
+	<% end %>
+</table>

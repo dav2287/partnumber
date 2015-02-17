@@ -1,0 +1,39 @@
+<%= form_for :part, url: parts_path do |f| %>
+	<% if @part.errors.any? %>
+	    <div id="error_explanation">
+	      <h2>
+	        <%= pluralize(@part.errors.count, "error") %> prohibited
+	        this part from being saved:
+	      </h2>
+	      <ul>
+	        <% @part.errors.full_messages.each do |msg| %>
+	          <li><%= msg %></li>
+	        <% end %>
+	      </ul>
+	    </div>
+  	<% end %>
+
+	<p>
+		<%= f.radio_button :category, 'custom', :checked => true %>
+		<%= f.label :category, "Custom", :value => 'custom' %>	
+		<%= f.radio_button :category, 'assembly' %>
+		<%= f.label :category, "Assembly", :value => 'assembly' %>
+		<%= f.radio_button :category, 'fastener' %>
+		<%= f.label :category, "Fastener", :value => 'fastener' %>
+		<%= f.radio_button :category, 'oem' %>
+		<%= f.label :category, "OEM", :value => 'oem' %>
+		<%= f.radio_button :category, 'pneumatic' %>
+		<%= f.label :category, "Pneumatic", :value => 'pneumatic' %>
+		<%= f.radio_button :category, 'electrical' %>
+		<%= f.label :category, "Electrical", :value => 'electrical' %>
+	</p>
+	<p>
+		<%= f.label :description %><br>
+		<%= f.text_field :description %>
+	</p>
+
+	<p>
+		<%= f.submit %>
+	</p>
+	
+<% end %>

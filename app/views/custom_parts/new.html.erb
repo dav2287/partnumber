@@ -1,0 +1,27 @@
+<%= form_for :part, url: parts_path do |f| %>
+	<% if @part.errors.any? %>
+	    <div id="error_explanation">
+	      <h2>
+	        <%= pluralize(@part.errors.count, "error") %> prohibited
+	        this part from being saved:
+	      </h2>
+	      <ul>
+	        <% @part.errors.full_messages.each do |msg| %>
+	          <li><%= msg %></li>
+	        <% end %>
+	      </ul>
+	    </div>
+  	<% end %>
+
+  	<%= @part.id %> <%= @part.description %>
+
+	<p>
+		<%= f.label :material %><br>
+		<%= f.text_field :material %>
+	</p>
+
+	<p>
+		<%= f.submit %>
+	</p>
+	
+<% end %>

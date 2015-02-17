@@ -17,7 +17,6 @@ class PartsController < ApplicationController
 
 	def create
 		@part = Part.new(part_params)
-		@part.part_number = Part.where(:category == @part.category).count + 1
 		if @part.save
 			redirect_to @part
 		else

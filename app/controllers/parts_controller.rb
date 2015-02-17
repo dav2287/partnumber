@@ -17,12 +17,9 @@ class PartsController < ApplicationController
 
 	def create
 		@part = Part.new(part_params)
+		@part.part_number = Part.where(:category == @part.category).count + 1
 		if @part.save
-			if @part.category == 'custom'
-				render 'custom_parts/new'
-			else
-				redirect_to @part
-			end
+			redirect_to @part
 		else
 			render 'new'
 		end
@@ -47,7 +44,7 @@ class PartsController < ApplicationController
 
 	private
 		def part_params
-			params.require(:part).permit(:category, :description, :material)
+			params.require(:part).permit(:category, :description, :material, :part_number)
 			
 		end
 end

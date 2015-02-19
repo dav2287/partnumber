@@ -1,6 +1,6 @@
 class PartsController < ApplicationController
 	def index
-		@parts = Part.all
+		@parts = Part.search(params[:search])
 	end
 
 	def show

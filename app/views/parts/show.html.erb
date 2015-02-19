@@ -1,7 +1,6 @@
-<%= @part.category %><br>
-<%= @part.description %><br>
-<%= @part.part_number %><br>
-<%= @part.id %><br>
+<h2>Part Details</h2>
+<%= @part.part_number %> <%= @part.description %> <br><br>
+
+<%= link_to 'Edit Details', edit_part_path(@part) %><br>
 
 <%= link_to 'Back', parts_path %>
-<%= link_to 'Edit', edit_part_path(@part) %>

@@ -1,4 +1,17 @@
+<h1>Master Parts List</h1>
+
 <%= link_to 'New part', new_part_path %>
+
+
+
+<%= form_for parts_path, :method => 'get' do %>
+  <p>
+	Search by description:
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :description => nil %>
+  </p>
+<% end %>
+
 <table>
 	<tr>
 		<th>ID</th>

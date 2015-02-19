@@ -2,10 +2,20 @@ class Part < ActiveRecord::Base
 	has_many :custom_parts
 	validates :category, presence: true
 	validates :description, presence: true
+
+	scope :category, -> (category) { where category: category }
+
 	before_save :assign_part_number
 
 	private
 
+	def self.search(search)
+	  if search
+	    where('description LIKE ?', "%#{search}%")
+	  else
+	    all
+	  end
+	end
 
 	def assign_part_number
 		self.part_number = Part.where(category: self.category).count + get_prefix() + 1
